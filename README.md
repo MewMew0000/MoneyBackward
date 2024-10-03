@@ -18,7 +18,8 @@ A Web Application that can save your money
 - Data Crawling(legally): Python Scrapy Beautiful Soup Requests
 - Data analysis: Pandas Numpy
 - Predicate: TensorFlow Scikit-learn
-- Data representation:  
+- Data representation:
+#### Cyber Security
 #### Future：AWS
 - SnowFlake
 - Redshift
