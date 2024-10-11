@@ -1,6 +1,6 @@
 package conf
 
-type List struct {
+type ListOfConf struct {
 	Mysql  Mysql  `yaml:"mysql"`
 	Logger Logger `yaml:"logger"`
 	Server Server `yaml:"server"`

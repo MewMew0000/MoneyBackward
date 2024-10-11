@@ -1,13 +1,14 @@
 mysql:
   host: 127.0.0.1
   port: 3306
-  conn: mysqlDb
-  user: root
-  password: root
+  config: charset=utf8mb4&parseTime=True&loc=Local
+  conn: mewDB
+  username: root
+  password: 1234
   logLevel: dev
 logger:
   level: info
-  prefix: '[Server]'
+  prefix: '[gLog]'
   director: log
   showLine: true
   logInConsole: true
