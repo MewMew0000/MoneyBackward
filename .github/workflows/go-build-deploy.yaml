@@ -3,7 +3,7 @@ name: GO Build and Deploy
 on:
   push:
     branches:
-      - backend_infra_dev
+      - dev
 
 jobs:
   build:
