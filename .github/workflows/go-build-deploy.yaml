@@ -33,9 +33,9 @@ jobs:
 
       - name: Service Health Check
         run: |
-          CONTAINER_NAME=$(docker ps --filter "ancestor=mysql:5.7" --format "{{.Names}}")
+          CONTAINER_NAME=$(docker ps --filter "ancestor=mew_server:0.0.1" --format "{{.Names}}")
           if [ -z "$CONTAINER_NAME" ]; then
-            echo "MySQL container not found."
+            echo "Server not found."
             exit 1
           fi
           docker logs "$CONTAINER_NAME"
