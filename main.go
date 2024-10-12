@@ -1,6 +1,7 @@
 package main
 
 import (
+	"MoneyBackward/flags"
 	"MoneyBackward/global"
 	"MoneyBackward/routers"
 	"MoneyBackward/setup"
@@ -29,6 +30,9 @@ func main() {
 		panic(fmt.Errorf("server crashed: %s", err))
 	}
 	global.Logger.Info(fmt.Sprintf("init mysql success, mysqlDB now at %v\n", &global.MysqlDB))
+
+	//init tables in mysql
+	flags.DB()
 
 	//init router
 	router := routers.InitRouter()
