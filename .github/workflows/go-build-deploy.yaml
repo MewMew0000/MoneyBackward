@@ -1,0 +1,46 @@
+name: CI&CD
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Docker image
+        run: |
+          docker build -t mew_server:0.0.1 .
+
+      - name: Set up Docker
+        run: |
+          sudo apt-get install -y docker-compose
+
+      - name: Run Docker Compose
+        run: |
+          docker-compose up -d
+
+      - name: Service Health Check
+        run: |
+          CONTAINER_NAME=$(docker ps --filter "ancestor=mew_server:0.0.1" --format "{{.Names}}")
+          if [ -z "$CONTAINER_NAME" ]; then
+            echo "Server not found."
+            exit 1
+          fi
+          docker logs "$CONTAINER_NAME"
+
+      - name: Shut down services
+        if: always()
+        run: |
+          docker-compose down
