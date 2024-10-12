@@ -23,25 +23,27 @@ jobs:
           --health-timeout=5s
           --health-retries=3
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
-
-      - name: Set up Go
-        uses: actions/setup-go@v2
-        with:
-          go-version:  '1.23.2'
-
-      - name: Install dependencies
-        run: go mod tidy
-
-      - name: Build
-        run: go build -o mew_backend main.go
-
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag: ${{ github.ref }}
-          files: mew_backend
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       - name: Test
+         run: echo "hello git action"
+#      - name: Check out the repository
+#        uses: actions/checkout@v2
+#
+#      - name: Set up Go
+#        uses: actions/setup-go@v2
+#        with:
+#          go-version:  '1.23.2'
+#
+#      - name: Install dependencies
+#        run: go mod tidy
+#
+#      - name: Build
+#        run: go build -o mew_backend main.go
+#
+#      - name: Create Release
+#        id: create_release
+#        uses: softprops/action-gh-release@v1
+#        with:
+#          tag: ${{ github.ref }}
+#          files: mew_backend
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
