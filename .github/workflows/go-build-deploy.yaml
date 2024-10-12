@@ -31,6 +31,10 @@ jobs:
         run: |
           docker-compose up -d
 
+      - name: Service Health Check
+        run: |
+          docker logs moneybackward-mysql-1
+
       - name: Shut down services
         if: always()
         run: |

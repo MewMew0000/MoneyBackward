@@ -9,6 +9,11 @@ services:
     networks:
       mew_network:
         ipv4_address: 10.2.0.4
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-p1234" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   mew_server:
     restart: always
     image: mew_server:0.0.1
@@ -16,10 +21,13 @@ services:
       mew_network:
         ipv4_address: 10.2.0.2
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     volumes:
       - ./conf.yaml:/app/conf.yaml
     command: "/app/main"
+    ports:
+      - "8080:8080"
 
 networks:
   mew_network:

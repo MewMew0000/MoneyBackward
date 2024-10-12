@@ -2,7 +2,7 @@ mysql:
   host: 10.2.0.4
   port: 3306
   config: charset=utf8mb4&parseTime=True&loc=Local
-  defaultSchema: mewDB
+  defaultSchema: mew_schema
   username: root
   password: 1234
   logLevel: dev
@@ -15,4 +15,4 @@ logger:
 server:
   host: "0.0.0.0"
   port: 8080
-  env: dev
+  env: 0

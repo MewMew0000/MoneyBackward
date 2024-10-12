@@ -28,4 +28,12 @@ func main() {
 		panic(fmt.Errorf("server crashed: %s", err))
 	}
 	global.Logger.Info(fmt.Sprintf("init mysql success, mysqlDB now at %v\n", &global.MysqlDB))
+
+	//init router
+	router := setup.InitRouter()
+	if err := router.Run(global.Conf.Server.Addr()); err != nil {
+		panic(fmt.Errorf("server crashed: %s", err))
+	} else {
+		global.Logger.Info(fmt.Sprintf("init router success, router now at %v\n", &router))
+	}
 }
