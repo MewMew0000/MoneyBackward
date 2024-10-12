@@ -31,7 +31,7 @@ func main() {
 	}
 	global.Logger.Info(fmt.Sprintf("init mysql success, mysqlDB now at %v\n", &global.MysqlDB))
 
-	//init tables in mysql
+	// //init tables in mysql
 	flags.DB()
 
 	//init router
