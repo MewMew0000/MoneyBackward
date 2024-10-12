@@ -1,0 +1,30 @@
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: mew_schema
+    networks:
+      mew_network:
+        ipv4_address: 10.2.0.4
+  mew_server:
+    restart: always
+    image: mew_server:0.0.1
+    networks:
+      mew_network:
+        ipv4_address: 10.2.0.2
+    depends_on:
+      - mysql
+    volumes:
+      - ./conf.yaml:/app/conf.yaml
+    command: "/app/main"
+
+networks:
+  mew_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.2.0.0/24
