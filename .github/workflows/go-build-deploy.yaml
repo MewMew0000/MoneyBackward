@@ -33,7 +33,12 @@ jobs:
 
       - name: Service Health Check
         run: |
-          docker logs moneybackward-mysql-1
+          CONTAINER_NAME=$(docker ps --filter "ancestor=mysql:5.7" --format "{{.Names}}")
+          if [ -z "$CONTAINER_NAME" ]; then
+            echo "MySQL container not found."
+            exit 1
+          fi
+          docker logs "$CONTAINER_NAME"
 
       - name: Shut down services
         if: always()
