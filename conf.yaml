@@ -16,3 +16,16 @@ server:
   host: "0.0.0.0"
   port: 8080
   env: 0
+
+siteInfo:
+  createdAt: "2024-10-12"
+  title: MoneyBackward
+  version: 0.0.1
+  name: MoneyBackward
+  addr: Kyoto JP
+  slogan: I want my money back
+  email: charlswang1qq6@gmail.com
+  lineImage: /uploads/file/admin/qq_20230930151442.png
+  wechatImage: /uploads/file/admin/wechat_20230930151521.png
+  bilibiliUrl: https://space.bilibili.com/8526943
+  githubUrl: https://github.com/fengfengzhidao/
